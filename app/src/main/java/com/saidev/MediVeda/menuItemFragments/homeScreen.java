@@ -14,11 +14,17 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
+import com.google.android.gms.ads.MobileAds;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -43,7 +49,7 @@ public class homeScreen extends Fragment {
     CardView HospitalLocator;
     String PRE_DEFINED_PROMPT_PRAKRUTI = "Hey, I want you to be an ayurvedic doctor and ask me questions one by one to determine my prakriti type. Start the task immediately by greeting the user in a single line. Make sure that there should be three options in an order of a, b, c in each of your question, so the user have three options for each question and he answers them by select any option from a, b or c. Ask the next question only when the user has answered the previous question . After you determined the prakriti type of user, give him suggestion to improve his lifestyle and diet plan. ***NOTE: 1. All points are necessary. 2. In the first question, you should ask about the age of the user. 3. IN THE FIRST QUESTION, THE USER WILL HAVE TO ENTER HIS AGE MANUALLY, YOU WILL NOT PROVIDE HIM WITH OPTIONS(ONLY FOR THE FIRST QUESTION). ONCE THE USER WILL PROVIDE HIS AGE THEN ONLY YOU WILL MOVE TO THE NEXT QUESTION. 4. In the second question, you should ask the user about his gender. 5. You need to ask a total of at least 15-17 questions to improve the accuracy of the result. 6. Ask every question one by one, i.e., first you will have to ask a question and then provide the user with options to choose from, once the user opts for a answer then you will ask the next question. 7. At the very final end of the prakruti assesment, after suggesting the user for his lifestyle and diet plans, show him this message \"----------THANK YOU----------\"" + "*";
     String PRE_DEFINED_PROMPT_DISEASE_DIAGNOSIS = "behave like a professional doctor, communicate in English language, introduce yourself as a chatbot named \"Med-O\". Ask questions to the user about the symptoms he is facing and also provide him a list to choose from, and based on his response ask further questions one by one and provide options to the user to choose from, and try to diagnose the disease he is having as accurately as possible. * NOTE: 1. Every question should be mcq type i.e. it must have option(s) to choose from. 2. Reflect the Diagnosed problem(in the last) in bold letters. 3. Always ask the question one by one: Ask a question to the user and provide him with options to choose from, once the user answers the first question then only ask the second question. *";
-
+    private static final String ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
 
     public homeScreen() {
         // Required empty public constructor
@@ -61,6 +67,13 @@ public class homeScreen extends Fragment {
         homeSlider = v.findViewById(R.id.home_banner_slider);
         prakrutiAssessment = v.findViewById(R.id.prakruti_assessment);
         HospitalLocator = v.findViewById(R.id.hospitalLocator);
+
+        MobileAds.initialize(v.getContext(), initializationStatus -> {});
+
+        AdView adView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
 
 
         if (!mAuth.getCurrentUser().isEmailVerified()){
