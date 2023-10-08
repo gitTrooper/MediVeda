@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "545614325941",
+    "project_id": "medical-45d66",
+    "storage_bucket": "medical-45d66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545614325941:android:b0c26fd8275c95c57cf6fc",
+        "android_client_info": {
+          "package_name": "com.saidev.MediVeda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545614325941-4o2137sfcrk7hs6et9rs7mbk4gcs0o9n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBcrLt8VlVIPYgagLJvJBwfkUX__U2UuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545614325941-4o2137sfcrk7hs6et9rs7mbk4gcs0o9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

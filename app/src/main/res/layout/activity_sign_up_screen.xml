@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signUp_screen">
+
+    <ImageView
+        android:background="@drawable/bot_logo"
+        android:layout_marginTop="50dp"
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="MediVeda"
+        android:textColor="#008C8D"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Symptoms Decoded, Solutions Unveiled!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/name_card"
+        app:cardElevation="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/user_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/user_name"
+                android:inputType="textPersonName"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Your Full Name"
+                android:textColorHint="#B1B1B1" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/age_card"
+        app:cardElevation="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_card" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/age_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/user_age"
+                android:inputType="number"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Your Age"
+                android:textColorHint="#B1B1B1" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/phone_card"
+        app:cardElevation="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_card" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/phone_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/user_phone"
+                android:inputType="phone"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Phone Number"
+                android:textColorHint="#B1B1B1" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/email_card"
+        app:cardElevation="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone_card" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/email_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/user_email"
+                android:inputType="textEmailAddress"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Email"
+                android:textColorHint="#B1B1B1" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/password_card"
+        app:cardElevation="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_card" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/password_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/user_password"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Password"
+                android:textColorHint="#B1B1B1" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_marginTop="30dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#008C8D"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Sign Up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_card" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
