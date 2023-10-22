@@ -5,35 +5,51 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
     android:layout_margin="10dp"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hospitalDetailCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/hospital_name"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Hospital Name"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/hospital_rating"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="12dp"
+            android:fontFamily="@font/montserrat_light"
+            android:id="@+id/hospital_address"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Hospital Address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospital_name" />
+
+        <TextView
+            android:layout_marginEnd="10dp"
+            android:textAlignment="center"
+            android:id="@+id/hospital_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_light"
             android:text="Hospital Rating"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hospital_name" />
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

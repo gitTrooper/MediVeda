@@ -3,15 +3,16 @@ package com.saidev.MediVeda;
 import android.content.Context;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,12 @@ public class api_integration {
         void onError(VolleyError error);
     }
 
+
+
     public static void generateResponse(Context ctx, String input, final ChatGPTResponseListener listener, List<String> conversationHistory) {
+
+
+
         JSONObject jsonRequest = new JSONObject();
         try {
             jsonRequest.put("model", "gpt-3.5-turbo");
@@ -84,19 +90,20 @@ public class api_integration {
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
-                headers.put("Authorization", "Bearer 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");
+                headers.put("Authorization", "Bearer ");
 
                 return headers;
             }
         };
 
-        int intTimeout = 20000;
+        int intTimeout = 30000;
         RetryPolicy retryPolicy = new DefaultRetryPolicy(intTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         jsonObjectRequest.setRetryPolicy(retryPolicy);
 
         Volley.newRequestQueue(ctx).add(jsonObjectRequest);
     }
+
 
 
 }

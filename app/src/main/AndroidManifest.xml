@@ -4,9 +4,8 @@
     package="com.saidev.MediVeda">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +18,10 @@
         android:theme="@style/Theme.Xyz"
         tools:targetApi="31">
         <activity
-            android:name="com.saidev.MediVeda.entry_activity"
+            android:name=".features.emergencyServices"
+            android:exported="false" />
+        <activity
+            android:name=".entry_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,36 +30,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.saidev.MediVeda.features.chatBot_ui"
+            android:name=".features.chatBot_ui"
             android:exported="false" />
         <activity
-            android:name="com.saidev.MediVeda.home_Screen"
+            android:name=".home_Screen"
             android:exported="false" />
         <activity
-            android:name="com.saidev.MediVeda.signUp_screen"
+            android:name=".signUp_screen"
             android:exported="false" />
         <activity
-            android:name="com.saidev.MediVeda.login_screen"
+            android:name=".login_screen"
             android:exported="false" />
         <activity
-            android:name="com.saidev.MediVeda.MainActivity"
-            android:exported="false"/>
-
+            android:name=".MainActivity"
+            android:exported="false" />
         <activity
-            android:name="com.saidev.MediVeda.features.hospitalLocator"
-            android:exported="false">
-
-        </activity>
+            android:name=".features.hospitalLocator"
+            android:exported="false"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+            android:resource="@array/preloaded_fonts" /> <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
-
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 package com.saidev.MediVeda.features;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,41 +15,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.saidev.MediVeda.R;
 import com.saidev.MediVeda.api_integration;
 import com.saidev.MediVeda.message;
 import com.saidev.MediVeda.messageAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class chatBot_ui extends AppCompatActivity {
 
@@ -70,6 +52,7 @@ public class chatBot_ui extends AppCompatActivity {
     TextView counter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CardView inputCard;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -100,9 +83,9 @@ public class chatBot_ui extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         chatHolderRecycler.setLayoutManager(linearLayoutManager);
 
+
         SharedPreferences sharedPreferences = getSharedPreferences("ChatBotPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
 
         lastInteractionTimestamp = sharedPreferences.getLong("lastInteractionTimestamp", 0);
         interactionCount = sharedPreferences.getInt("interactionCount", 0);
@@ -146,48 +129,58 @@ public class chatBot_ui extends AppCompatActivity {
         send_text_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.show();
-                String user_response = msg_editor_box.getText().toString();
-                addToChat(user_response, message.SENT_BY_USER);
-                msg_editor_box.setText("");
-                api_integration.generateResponse(getApplicationContext(), user_response, new api_integration.ChatGPTResponseListener() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response.toLowerCase().contains("----------thank you----------"))
-                        {
-                            // Increment the interaction count
-                            interactionCount++;
-                            // Update the last interaction timestamp
-                            editor.putLong("lastInteractionTimestamp", currentTimestamp);
-                            editor.putInt("interactionCount", interactionCount);
-                            editor.apply();
-                            counter.setText("Limit : "+String.valueOf(maxInteractionsPerDay-interactionCount));
-                            // Example data to be added
-                            Map<String, Object> report = new HashMap<>();
-                            report.put("Report", response);
-                            db.collection("Users").document(mAuth.getCurrentUser().getEmail())
-                                            .update("Prakruti Report",report)
-                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
 
-                                                        }
-                                                    });
+                if (!msg_editor_box.getText().toString().isEmpty())
+                {
+                    dialog.show();
+                    String user_response = msg_editor_box.getText().toString();
+                    addToChat(user_response, message.SENT_BY_USER);
+                    msg_editor_box.setText("");
+                    api_integration.generateResponse(getApplicationContext(), user_response, new api_integration.ChatGPTResponseListener() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.toLowerCase().contains("----------thank you----------"))
+                            {
+                                // Increment the interaction count
+                                interactionCount++;
+                                // Update the last interaction timestamp
+                                editor.putLong("lastInteractionTimestamp", currentTimestamp);
+                                editor.putInt("interactionCount", interactionCount);
+                                editor.apply();
+                                counter.setText("Limit : "+String.valueOf(maxInteractionsPerDay-interactionCount));
+                                // Example data to be added
+                                Map<String, Object> report = new HashMap<>();
+                                report.put("Report", response);
+                                db.collection("Users").document(mAuth.getCurrentUser().getEmail())
+                                        .update("Prakruti Report",report)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
 
-                            addToChat(response, message.SENT_BY_BOT);
+                                            }
+                                        });
+
+
+                                addToChat(response, message.SENT_BY_BOT);
+                            }
+                            else {
+                                addToChat(response, message.SENT_BY_BOT);
+                            }
+
+                            dialog.dismiss();
                         }
-                        else {
-                            addToChat(response, message.SENT_BY_BOT);
+
+                        @Override
+                        public void onError(VolleyError error) {
+
                         }
+                    },conversationHistory);
+                }
 
-                        dialog.dismiss();
-                    }
+                else {
+                    msg_editor_box.setError("Enter Your Response");
+                }
 
-                    @Override
-                    public void onError(VolleyError error) {
-
-                    }
-                },conversationHistory);
             }
         });
 
@@ -204,6 +197,7 @@ public class chatBot_ui extends AppCompatActivity {
             }
         });
     }
+
 
 
 
